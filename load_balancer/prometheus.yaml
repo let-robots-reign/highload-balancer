@@ -1,0 +1,42 @@
+global:
+  scrape_interval:     5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  # LOAD BALANCER
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'Zotov-balancer-server'
+    static_configs:
+      - targets: ['node_exporter:9100']
+
+  # SERVERS
+
+  # SERVER 1
+  - job_name: 'Zotov-1-backend'
+    static_configs:
+      - targets: ['82.148.28.35:5050']
+
+  - job_name: 'Zotov-1-server'
+    static_configs:
+      - targets: ['82.148.28.35:9100']
+
+  # SERVER 2
+  - job_name: 'Zotov-2-backend'
+    static_configs:
+      - targets: ['77.223.99.188:5050']
+
+  - job_name: 'Zotov-2-server'
+    static_configs:
+      - targets: ['77.223.99.188:9100']
+
+  # SERVER 3
+  - job_name: 'Zotov-3-backend'
+    static_configs:
+      - targets: ['81.163.31.35:5050']
+
+  - job_name: 'Zotov-3-server'
+    static_configs:
+      - targets: ['81.163.31.35:9100']
