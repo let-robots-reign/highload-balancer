@@ -42,7 +42,7 @@ func DoWork(ctx echo.Context) error {
 	// relatively slow backend
 	// simulating some work done on the server
 	const maxWaitingTime = 500
-	time.Sleep(time.Duration(rand.Intn(maxWaitingTime)+200) * time.Millisecond)
+	time.Sleep(time.Duration(rand.Intn(maxWaitingTime)) * time.Millisecond)
 	return ctx.String(http.StatusOK, "My long request has finished! I'm done!\n")
 }
 
